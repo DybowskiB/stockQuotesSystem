@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Transaction {
-  transaction_id: String!
+  transactionId: String!
   timestamp: DateTime!
   price: Float!
   instrumentThicker: InstrumentThicker!

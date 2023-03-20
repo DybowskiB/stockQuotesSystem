@@ -4,12 +4,12 @@ import { InstrumentThicker } from "src/instrument-thicker/entities/instrument-th
 import { Entity, PrimaryGeneratedColumn, Column, Check, ManyToOne, JoinColumn } from "typeorm"
 
 @ObjectType()
-@Entity({name: "Transactions"})
+@Entity({name: "transactions"})
 export class Transaction{
 
     @Field()
-    @PrimaryGeneratedColumn('uuid')
-    transaction_id: string
+    @PrimaryGeneratedColumn('uuid', {name: 'transaction_id'})
+    transactionId: string
 
     @Field()
     @Column({ name: 'timestamp', type: 'timestamp with time zone', default: (): string => 'LOCALTIMESTAMP' })

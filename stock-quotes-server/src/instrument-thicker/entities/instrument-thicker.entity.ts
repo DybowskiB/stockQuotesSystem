@@ -3,7 +3,7 @@ import { Transaction } from "src/transaction/entities/transaction.entity"
 import { Entity, PrimaryGeneratedColumn, Column, Unique, OneToMany } from "typeorm"
 
 @ObjectType()
-@Entity({ name: 'InstrumentThickers'})
+@Entity({ name: 'instrument_thickers'})
 export class InstrumentThicker{
 
     @Field()

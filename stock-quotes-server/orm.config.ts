@@ -8,7 +8,7 @@ const config: DataSourceOptions = {
     "port": 5432,
     "username": "postgres",
     "password": "ahghem7U",
-    "database": "stockQuotes",
+    "database": "stock_quotes",
     "entities": [
         InstrumentThicker,
         Transaction

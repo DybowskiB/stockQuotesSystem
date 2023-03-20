@@ -17,5 +17,5 @@ export class TransactionResolver {
     create(@Args('transactionInput') transaction : TransactionCreateDTO){
         return this.transactionService.create(transaction);
     }
-
+    
 }

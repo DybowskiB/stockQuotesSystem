@@ -6,6 +6,7 @@ import { InstrumentThicker } from './entities/instrument-thicker.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([InstrumentThicker])],
-  providers: [InstrumentThickerService, InstrumentThickerResolver]
+  providers: [InstrumentThickerService, InstrumentThickerResolver],
+  exports: [InstrumentThickerService]
 })
 export class InstrumentThickerModule {}

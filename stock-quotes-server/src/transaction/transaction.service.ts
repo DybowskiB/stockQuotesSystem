@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm/dist';
-import { InstrumentThickerCreateDTO } from 'src/instrument-thicker/dto/create-instrument-thicker.input';
-import { InstrumentThickerService } from 'src/instrument-thicker/instrument-thicker.service';
+import { InstrumentThickerCreateDTO } from '../../src/instrument-thicker/dto/create-instrument-thicker.input';
+import { InstrumentThickerService } from '../../src/instrument-thicker/instrument-thicker.service';
 import { Repository } from 'typeorm';
 import { TransactionCreateDTO } from './dto/create-transaction.input';
 import { Transaction } from './entities/transaction.entity';
@@ -28,7 +28,7 @@ export class TransactionService {
             instrumentThicker = await this.instrumentThickerService.create(instrumentThickerDTO)
         }
 
-        let tran = await this.transactionRepository.create(transaction);
+        let tran = this.transactionRepository.create(transaction);
         tran.instrumentThicker = instrumentThicker;
         
         return this.transactionRepository.save(tran);

@@ -13,14 +13,8 @@ export class InstrumentThickerResolver {
         return this.instrumentThickerService.findAll();
     }
 
-    @Query(() => InstrumentThicker, { name: 'findInstrumentThickerBySymbol' })
-    findOneBySymbol(@Args('symbol') symbol: string) {
-    return this.instrumentThickerService.findOneBySymbol(symbol);
-  }
-
     @Mutation( () => InstrumentThicker, {name: 'createInstrumentThicker'})
     create(@Args('instrumentThickerInput') instrument : InstrumentThickerCreateDTO){
-        
         return this.instrumentThickerService.create(instrument);
     }
 

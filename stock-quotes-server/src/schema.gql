@@ -23,7 +23,6 @@ type InstrumentThicker {
 type Query {
   getAllTransactions: [Transaction!]!
   getAllInstrumentThickers: [InstrumentThicker!]!
-  findInstrumentThickerBySymbol(symbol: String!): InstrumentThicker!
 }
 
 type Mutation {

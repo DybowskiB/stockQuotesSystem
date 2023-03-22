@@ -1,6 +1,6 @@
 import { Float } from "@nestjs/graphql";
 import { Field, ObjectType } from "@nestjs/graphql/dist/decorators"
-import { InstrumentThicker } from "src/instrument-thicker/entities/instrument-thicker.entity";
+import { InstrumentThicker } from "../../../src/instrument-thicker/entities/instrument-thicker.entity";
 import { Entity, PrimaryGeneratedColumn, Column, Check, ManyToOne, JoinColumn } from "typeorm"
 
 @ObjectType()

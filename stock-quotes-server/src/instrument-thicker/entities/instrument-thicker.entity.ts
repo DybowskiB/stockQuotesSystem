@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "@nestjs/graphql/dist/decorators"
-import { Transaction } from "src/transaction/entities/transaction.entity"
+import { Transaction } from "../../../src/transaction/entities/transaction.entity"
 import { Entity, PrimaryGeneratedColumn, Column, Unique, OneToMany } from "typeorm"
 
 @ObjectType()

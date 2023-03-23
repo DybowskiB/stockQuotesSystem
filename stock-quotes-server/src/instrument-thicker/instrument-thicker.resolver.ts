@@ -13,9 +13,4 @@ export class InstrumentThickerResolver {
         return this.instrumentThickerService.findAll();
     }
 
-    @Mutation( () => InstrumentThicker, {name: 'createInstrumentThicker'})
-    create(@Args('instrumentThickerInput') instrument : InstrumentThickerCreateDTO){
-        return this.instrumentThickerService.create(instrument);
-    }
-
 }

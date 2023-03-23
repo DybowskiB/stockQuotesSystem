@@ -37,14 +37,4 @@ describe('InstrumentThickerResolver', () => {
     expect(instrumentThickerResolver).toBeDefined();
   });
 
-  it('should have create function', () => {
-    expect(instrumentThickerResolver.create).toBeDefined();
-  })
-
-  it('should create insturment thicker and return with instrument thicker id', async () => {
-    expect(await instrumentThickerResolver.create(instrumentThickerDTO)).toEqual({
-      id: "fake-instrument-thicker-id",
-      ...instrumentThickerDTO,
-    })
-  })
 });

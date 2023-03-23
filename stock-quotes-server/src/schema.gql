@@ -27,15 +27,10 @@ type Query {
 
 type Mutation {
   createTransaction(transactionInput: TransactionCreateDTO!): Transaction!
-  createInstrumentThicker(instrumentThickerInput: InstrumentThickerCreateDTO!): InstrumentThicker!
 }
 
 input TransactionCreateDTO {
   timestamp: DateTime!
   price: Float!
-  symbol: String!
-}
-
-input InstrumentThickerCreateDTO {
   symbol: String!
 }

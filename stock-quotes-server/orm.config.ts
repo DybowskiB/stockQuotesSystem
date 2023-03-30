@@ -1,6 +1,6 @@
 import { DataSourceOptions } from 'typeorm';
-import { InstrumentThicker } from 'src/instrument-thicker/entities/instrument-thicker.entity';
-import { Transaction } from 'src/transaction/entities/transaction.entity';
+import { InstrumentThicker } from './src/instrument-thicker/entities/instrument-thicker.entity';
+import { Transaction } from './src/transaction/entities/transaction.entity';
 
 const config: DataSourceOptions = {
     "type": "postgres",

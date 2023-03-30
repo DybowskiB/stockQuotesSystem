@@ -1,9 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
+import { getRepositoryToken, TypeOrmModule } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { InstrumentThickerService } from '../../src/instrument-thicker/instrument-thicker.service';
 import { TransactionCreateDTO } from './dto/create-transaction.input';
 import { Transaction } from './entities/transaction.entity';
 import { TransactionService } from './transaction.service';
+import ormconfig from '../../orm.config';
+import { InstrumentThicker } from '../../src/instrument-thicker/entities/instrument-thicker.entity';
 
 describe('TransactionService', () => {
   
@@ -91,4 +94,49 @@ describe('TransactionService', () => {
     expect(transaction.instrumentThicker.symbol === transactionCreateDTO2.symbol)
   })
 
+});
+
+describe('TransactionService with DB', () => {
+  let transactionService: TransactionService;
+  let module: TestingModule;
+
+  let transactionCreateDTO = new TransactionCreateDTO();
+  transactionCreateDTO.price = 1.00;
+  transactionCreateDTO.timestamp = new Date(2023, 3, 1, 12, 0);
+  transactionCreateDTO.symbol = 'new';
+
+  beforeAll(async () => {
+    module = await Test.createTestingModule({
+      imports: [
+        TypeOrmModule.forRoot(ormconfig),
+        TypeOrmModule.forFeature([Transaction, InstrumentThicker])
+      ],
+      providers: [TransactionService, InstrumentThickerService, Repository<Transaction>]
+    }).compile();
+
+    transactionService = module.get<TransactionService>(TransactionService);
+  });
+
+  afterAll(async () => {
+    module.close();
+  });
+
+  it("should be defined", () => {
+    expect(transactionService).toBeDefined();
+  });
+
+  it("should't return error when many concurrent requests attempt to add quotes for the same ticker that doesn't yet exist in the database",
+    async () => {
+      let transactions = [];
+      let numOfTransactions = 20;
+
+      for (let i = 0; i < numOfTransactions; ++i) {
+        transactions.push(transactionService.create(transactionCreateDTO))
+      }
+
+      for (let i = 0; i < numOfTransactions; ++i) {
+        await expect(transactions[i]).resolves.toBeDefined();
+      }
+
+    })
 });

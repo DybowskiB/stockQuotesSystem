@@ -25,7 +25,11 @@ export class TransactionService {
         if(!instrumentThicker){
             let instrumentThickerDTO = new InstrumentThickerCreateDTO()
             instrumentThickerDTO.symbol = symbol;
-            instrumentThicker = await this.instrumentThickerService.create(instrumentThickerDTO)
+            try{
+                instrumentThicker = await this.instrumentThickerService.create(instrumentThickerDTO);
+            }catch(exception){
+                instrumentThicker = await this.instrumentThickerService.findOneBySymbol(symbol);
+            }
         }
 
         let tran = this.transactionRepository.create(transaction);
